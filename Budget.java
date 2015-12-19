@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -54,15 +55,16 @@ public class Budget {
 	public String printRecurringExpenses() {
 		String expenses = "";
 		for(String key: recurringExpenses.keySet()) {
+			expenses += key + ":\n";
 			for (Expenses expense: recurringExpenses.get(key)) {
-				expenses += expense + "\n";
+				expenses += "\t" + expense + "\n";
 			}
 		}
 		return expenses;
 	}
 	
 	public void splurge(GregorianCalendar todaysDate, String splurge, Double amount) {
-		String weekNum = "week" + todaysDate.WEEK_OF_YEAR;
+		String weekNum = "week" + todaysDate.get(Calendar.WEEK_OF_YEAR);
 		if(splurges.get(weekNum) == null) {
 			splurges.put(weekNum, new LinkedList<Expenses>());
 		}
@@ -74,7 +76,7 @@ public class Budget {
 		for(String key: splurges.keySet()) {
 			expenses += key + ":\n";
 			for (Expenses expense: splurges.get(key)) {
-				expenses += expense + "\n";
+				expenses += "\t" + expense + "\n";
 			}
 		}
 		return expenses;

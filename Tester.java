@@ -1,9 +1,10 @@
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Tester {
 	
 	public static void main(String[] args) {
-		Budget myBudget = new Budget(10.25, 24.0, .15);
+		Budget myBudget = new Budget(12.50, 24.0, .15);
 		myBudget.addExpense("Media", "Crunchyroll", 6.95);
 		myBudget.addExpense("Media", "Hulu", 11.99);
 		myBudget.addExpense("Media", "Twitch", 8.99);
@@ -16,8 +17,6 @@ public class Tester {
 		System.out.println("$" + String.format("%.2f", myBudget.WeeklyBudget()));
 		myBudget.splurge(new GregorianCalendar(), "ice cream", 2.50);
 		System.out.println(myBudget.printSplurges());
-		GregorianCalendar today = new GregorianCalendar();
-		System.out.print(today.MONTH + "/" + today.DAY_OF_MONTH + "/" + today.YEAR + "\n");
 	}
 
 }
